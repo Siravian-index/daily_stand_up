@@ -1,51 +1,32 @@
-struct Participant {
-    name: String,
-    has_spoken: bool,
-    id: i32,
-}
+mod input_manager;
+mod participant_manager;
 
-impl Participant {
-    fn new(name: String, id: i32) -> Self {
-        Participant {
-            name,
-            has_spoken: false,
-            id,
-        }
-    }
+use input_manager::{InputManager, Prompt};
+use participant_manager::ParticipantManager;
 
-    fn format(&self) {
-        // display info
-        let f = format!("");
-    }
-
-    fn flip_spoken(id: i32) {
-
-    }
-}
-
-struct ParticipantManager {
-    participants: Vec<Participant>,
-}
-
-impl ParticipantManager {
-    fn new(vec: Vec<String>) -> Self {
-        let p = vec
-            .iter()
-            .enumerate()
-            .map(|(i, n)| Participant::new(n.clone(), i as i32))
-            .collect();
-        ParticipantManager { participants: p }
-    }
-
-    // display participants
-    fn display_current(&self) {
-        self.participants.iter().for_each(|p| p.format())
-    }
-
-    // mark participant that spoke
-
-    //
-}
 fn main() {
-    println!("Hello, world!");
+    let p = vec![
+        String::from("David"),
+        String::from("Nacho"),
+        String::from("Mafe"),
+    ];
+
+    let input_manager: InputManager = InputManager::new();
+    let mut participant_manager = ParticipantManager::new(p);
+
+    // print time and date
+    println!("Type an id to mark an user that has already spoken");
+    loop {
+        participant_manager.display_current();
+        let prompt = input_manager.read_line();
+        match prompt {
+            Prompt::Number(id) => {
+                participant_manager.find_participant(id);
+            }
+            _ => break,
+        };
+        // clean screen
+    }
+
+    // end at
 }
