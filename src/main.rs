@@ -9,6 +9,7 @@ fn main() {
         String::from("David"),
         String::from("Nacho"),
         String::from("Mafe"),
+        String::from("Samuel"),
     ];
 
     let input_manager: InputManager = InputManager::new();
@@ -25,8 +26,7 @@ fn main() {
             }
             _ => break,
         };
-        // clean screen
+        input_manager.clean_screen();
     }
-
     // end at
 }

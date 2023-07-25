@@ -17,7 +17,7 @@ impl InputManager {
     }
 
     pub fn clean_screen(&self) {
-        todo!()
+        print!("{esc}[2J{esc}[1;1H", esc = 27 as char);
     }
 
     fn read_string() -> String {
@@ -27,6 +27,7 @@ impl InputManager {
             .expect("can not read user input");
         input
     }
+
     fn sanitize_input(str: &str) -> &str {
         str.trim()
     }
