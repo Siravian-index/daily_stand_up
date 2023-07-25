@@ -1,0 +1,1 @@
+This is a small CLI to help keeping track of people during daily stand up
