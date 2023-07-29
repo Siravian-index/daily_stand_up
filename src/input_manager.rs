@@ -46,3 +46,15 @@ impl InputManager {
         }
     }
 }
+
+
+impl InputManager {
+    pub fn load_data(&self, file_path: &str) -> Vec<String> {
+        vec![
+            String::from("David"),
+            String::from("Nacho"),
+            String::from("Mafe"),
+            String::from("Samuel"),
+        ]
+    }
+}

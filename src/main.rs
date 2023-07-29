@@ -5,19 +5,15 @@ use input_manager::{InputManager, Prompt};
 use participant_manager::ParticipantManager;
 
 fn main() {
-    let p = vec![
-        String::from("David"),
-        String::from("Nacho"),
-        String::from("Mafe"),
-        String::from("Samuel"),
-    ];
+
 
     let input_manager: InputManager = InputManager::new();
-    let mut participant_manager = ParticipantManager::new(p);
+    let data = input_manager.load_data("path/file.txt");
+    let mut participant_manager = ParticipantManager::new(data);
 
-    // print time and date
-    println!("Type an id to mark an user that has already spoken");
     loop {
+        // print time and date
+        println!("Type an id to mark an user that has already spoken");
         participant_manager.display_current();
         let prompt = input_manager.read_line();
         match prompt {

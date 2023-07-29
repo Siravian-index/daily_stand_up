@@ -14,8 +14,8 @@ impl Participant {
     }
 
     fn format(&self) {
-        let symbol = if self.has_spoken { "X" } else { "~" };
-        let f = format!("-{} {} {}", self.id, self.name, symbol);
+        let symbol = if self.has_spoken { "[X]" } else { "[ ]" };
+        let f = format!("{}. {} {}", self.id, self.name, symbol);
         println!("{}", f);
     }
 
