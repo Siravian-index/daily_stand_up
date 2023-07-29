@@ -5,10 +5,8 @@ use input_manager::{InputManager, Prompt};
 use participant_manager::ParticipantManager;
 
 fn main() {
-
-
     let input_manager: InputManager = InputManager::new();
-    let data = input_manager.load_data("path/file.txt");
+    let data = input_manager.load_data("./data.txt");
     let mut participant_manager = ParticipantManager::new(data);
 
     loop {

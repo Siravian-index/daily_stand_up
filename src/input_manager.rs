@@ -10,6 +10,9 @@ impl InputManager {
     pub fn new() -> Self {
         InputManager
     }
+}
+
+impl InputManager {
     pub fn read_line(&self) -> Prompt {
         let str = Self::read_string();
         let sanitized = Self::sanitize_input(&str);
@@ -49,12 +52,8 @@ impl InputManager {
 
 
 impl InputManager {
-    pub fn load_data(&self, file_path: &str) -> Vec<String> {
-        vec![
-            String::from("David"),
-            String::from("Nacho"),
-            String::from("Mafe"),
-            String::from("Samuel"),
-        ]
+    pub fn load_data(&self, path: &str) -> Vec<String> {
+        let data = std::fs::read_to_string(path).expect("There should be a file called data.txt in this location (project_root/data.txt)");
+        data.lines().map(|l| String::from(Self::sanitize_input(l))).collect()
     }
 }
