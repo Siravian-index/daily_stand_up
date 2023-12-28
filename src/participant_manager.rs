@@ -47,7 +47,5 @@ impl ParticipantManager {
         if let Some(p) = found {
             p.flip_spoken();
         }
-
-        
     }
 }

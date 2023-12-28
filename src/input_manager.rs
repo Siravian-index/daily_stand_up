@@ -1,3 +1,5 @@
+use std;
+
 pub struct InputManager;
 
 pub enum Prompt {
@@ -50,10 +52,21 @@ impl InputManager {
     }
 }
 
-
 impl InputManager {
     pub fn load_data(&self, path: &str) -> Vec<String> {
-        let data = std::fs::read_to_string(path).expect("There should be a file called data.txt in this location (project_root/data.txt)");
-        data.lines().map(|l| String::from(Self::sanitize_input(l))).collect()
+        let error_msg = format!(
+            "Should have been able to read the file at the given path: {}",
+            path
+        );
+        let data = std::fs::read_to_string(path).expect(&error_msg);
+        data.lines()
+            .map(|l| String::from(Self::sanitize_input(l)))
+            .collect()
+    }
+
+    pub fn parse_args(&self) -> String {
+        let args: Vec<String> = std::env::args().collect();
+        let path = args.get(1).expect("Missing path argument!");
+        String::from(path)
     }
 }

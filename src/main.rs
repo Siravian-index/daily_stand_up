@@ -6,7 +6,9 @@ use participant_manager::ParticipantManager;
 
 fn main() {
     let input_manager: InputManager = InputManager::new();
-    let data = input_manager.load_data("./data.txt");
+    input_manager.clean_screen();
+    let path = input_manager.parse_args();
+    let data = input_manager.load_data(&path);
     let mut participant_manager = ParticipantManager::new(data);
 
     loop {
