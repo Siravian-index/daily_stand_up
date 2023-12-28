@@ -20,7 +20,11 @@ fn main() {
             Prompt::Number(id) => {
                 participant_manager.find_participant(id);
             }
-            _ => break,
+            Prompt::Quit => break,
+            _ => {
+                input_manager.clean_screen();
+                continue;
+            }
         };
         input_manager.clean_screen();
     }
